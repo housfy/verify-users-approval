@@ -1,0 +1,23 @@
+# action.yml
+name: 'Verify users approval'
+author: 'jesus-ortega-housfy'
+description: 'Verify that at least one of the given users have approved the PR'
+branding:
+  icon: 'check-square'
+  color: 'white'
+inputs:
+  users:
+    description: 'A comma separated list of the users that must approve the PR'
+    required: true
+  jsoncontent:
+    description: 'Json content'
+    required: true
+outputs:
+  result:
+    description: 'Result of check'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.users }}
+    - ${{ inputs.jsoncontent }}
