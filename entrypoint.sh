@@ -6,4 +6,5 @@ JSONCONTENT=$2
 
 result = $( "$JSONCONTENT" > file.json | less file.json | jq)
 
-echo result
+echo "Hello world" 
+echo "$result"
