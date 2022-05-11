@@ -4,7 +4,8 @@
 USERS=$1
 JSONCONTENT=$2
 
-result = $( "$JSONCONTENT" > file.json | less file.json | jq)
+result=$( "$JSONCONTENT" > file.json | less file.json | jq)
 
-echo "Hello world" 
+echo "Init 1" 
 echo "$result"
+echo "End 1"
