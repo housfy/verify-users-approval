@@ -3,9 +3,9 @@
 # Define variables
 OWNER=$1
 REPO=$2
-PULLNUMBER=$3
-USERS=$(echo $4 | sed -e 's/,/|/g')
-MINREVIEWERS=$5
+PULLNUMBER=$INPUT_PULLNUMBER
+USERS=$(echo $INPUT_USERS | sed -e 's/,/|/g')
+MINREVIEWERS=$INPUT_MINREVIEWERS
 REVIEWERSJSON=''
 
 function getReviewers() {
@@ -15,7 +15,7 @@ function getReviewers() {
   --fail \
   --header "Accept: application/vnd.github.v3+json" \
   --header "Authorization: token $GITHUB_TOKEN" \
-  https://api.github.com/repos/$OWNER/$REPO/pulls/$PULLNUMBER/reviews)
+  https://api.github.com/repos/$GITHUB_REPOSITORY/pulls/$PULLNUMBER/reviews)
 
   if [ "$?" -eq 0 ]; then
     echo "JSON Received"

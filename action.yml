@@ -6,12 +6,6 @@ branding:
   icon: 'check-square'
   color: 'white'
 inputs:
-  owner:
-    description: 'The owner/org of the repo'
-    required: true
-  repo:
-    description: 'The name of repo'
-    required: true
   pullnumber:
     description: 'The id number of the PR'
     required: true    
