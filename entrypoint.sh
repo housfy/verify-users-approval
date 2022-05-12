@@ -6,7 +6,7 @@ USERS=$(echo $INPUT_USERS | sed -e 's/,/|/g')
 MINREVIEWERS=$INPUT_MINREVIEWERS
 REVIEWERSJSON=''
 
-printf "Users that should have approve it"
+printf "Users that should have approve it\n"
 echo $USERS
 
 getReviewers() {
