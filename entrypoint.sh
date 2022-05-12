@@ -1,16 +1,12 @@
 #!/bin/sh -l
 
 # Define variables
-OWNER=$1
-REPO=$2
 PULLNUMBER=$INPUT_PULLNUMBER
 USERS=$(echo $INPUT_USERS | sed -e 's/,/|/g')
 MINREVIEWERS=$INPUT_MINREVIEWERS
 REVIEWERSJSON=''
 
-function getReviewers() {
-    #do curl get result
-    
+function getReviewers() {    
     REVIEWERSJSON=$(curl \
   --fail \
   --header "Accept: application/vnd.github.v3+json" \
