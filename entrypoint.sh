@@ -26,6 +26,9 @@ getReviewers() {
 }
 
 parseApproves() {
+    printf "Users that should have approve it"
+    echo $USERS
+    
     result=$(echo $REVIEWERSJSON | jq '.[] |  select(.state == "APPROVED") | .user.login' | grep -cE $USERS)
 
     printf "Printing result\n"
