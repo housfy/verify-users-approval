@@ -1,7 +1,7 @@
 # Container image that runs your code
 FROM alpine:3.10
 
-RUN apk update && apk add wget jq less grep && rm -rf /var/cache/apk/*
+RUN apk update && apk add curl jq less grep && rm -rf /var/cache/apk/*
 
 # Copies your code file from your action repository to the filesystem path `/` of the container
 COPY entrypoint.sh /entrypoint.sh
