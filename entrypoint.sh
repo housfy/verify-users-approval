@@ -33,8 +33,7 @@ function parseApproves() {
     printf "Printing minreviewers\n"
     echo $MINREVIEWERS
 
-    if(( $result>=$MINREVIEWERS ))
-    then
+   if [ "$result" -ge "$MINREVIEWERS" ]; then
         printf "Reviwers accepted\n"
         printf "Finishing all good."
     else
