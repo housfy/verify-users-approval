@@ -28,6 +28,11 @@ function getReviewers() {
 function parseApproves() {
     result=$(echo $REVIEWERSJSON | jq '.[] |  select(.state == "APPROVED") | .user.login' | grep -cE $USERS)
 
+    printf "Printing result\n"
+    echo $result
+    printf "Printing minreviewers\n"
+    echo $MINREVIEWERS
+
     if(( $result>=$MINREVIEWERS ))
     then
         printf "Reviwers accepted\n"
