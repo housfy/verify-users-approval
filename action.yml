@@ -7,10 +7,10 @@ branding:
   color: 'white'
 inputs:
   owner:
-    description: 'The owner of the repo'
+    description: 'The owner/org of the repo'
     required: true
   repo:
-    description: 'The repo'
+    description: 'The name of repo'
     required: true
   pullnumber:
     description: 'The id number of the PR'
@@ -19,7 +19,7 @@ inputs:
     description: 'A comma separated list of the users that must approve the PR'
     required: true
   minreviewers:
-    description: 'The minimum users needed for the check to pass'
+    description: 'The minimum number of users needed for the check to pass'
     required: true
 outputs:
   result:
