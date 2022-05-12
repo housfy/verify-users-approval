@@ -19,8 +19,7 @@ outputs:
   result:
     description: 'Result of check'
 runs:
-  using: 'docker'
-  image: 'Dockerfile'
-  args:
-    - ${{ inputs.users }}
-    - ${{ inputs.jsoncontent }}
+  using: "composite"
+  steps:
+    - run: $GITHUB_ACTION_PATH/entrypoint.sh
+      shell: bash
