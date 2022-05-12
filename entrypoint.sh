@@ -6,6 +6,9 @@ USERS=$(echo $INPUT_USERS | sed -e 's/,/|/g')
 MINREVIEWERS=$INPUT_MINREVIEWERS
 REVIEWERSJSON=''
 
+printf "Users that should have approve it"
+echo $USERS
+
 getReviewers() {
     printf "URL to curl\n"
     url="https://api.github.com/repos/$GITHUB_REPOSITORY/pulls/$PULLNUMBER/reviews"
@@ -25,10 +28,7 @@ getReviewers() {
   fi
 }
 
-parseApproves() {
-    printf "Users that should have approve it"
-    echo $USERS
-    
+parseApproves() {    
     result=$(echo $REVIEWERSJSON | jq '.[] |  select(.state == "APPROVED") | .user.login' | grep -cE $USERS)
 
     printf "Printing result\n"
