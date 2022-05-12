@@ -6,7 +6,7 @@ USERS=$(echo $INPUT_USERS | sed -e 's/,/|/g')
 MINREVIEWERS=$INPUT_MINREVIEWERS
 REVIEWERSJSON=''
 
-function getReviewers() {    
+getReviewers() {    
     REVIEWERSJSON=$(curl \
   --fail \
   --header "Accept: application/vnd.github.v3+json" \
@@ -21,7 +21,7 @@ function getReviewers() {
   fi
 }
 
-function parseApproves() {
+parseApproves() {
     result=$(echo $REVIEWERSJSON | jq '.[] |  select(.state == "APPROVED") | .user.login' | grep -cE $USERS)
 
     printf "Printing result\n"
