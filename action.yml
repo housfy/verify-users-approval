@@ -21,5 +21,10 @@ outputs:
 runs:
   using: "composite"
   steps:
-    - run: $GITHUB_ACTION_PATH/entrypoint.sh
+    - run: |
+        $GITHUB_ACTION_PATH/entrypoint.sh
       shell: bash
+      env:
+        INPUT_PULLNUMBER: ${{ inputs.pullnumber }}
+        INPUT_USERS: ${{ inputs.users }}
+        INPUT_MINREVIEWERS: ${{ inputs.minreviewers }}
