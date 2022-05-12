@@ -6,12 +6,16 @@ USERS=$(echo $INPUT_USERS | sed -e 's/,/|/g')
 MINREVIEWERS=$INPUT_MINREVIEWERS
 REVIEWERSJSON=''
 
-getReviewers() {    
+getReviewers() {
+    printf "URL to curl\n"
+    url="https://api.github.com/repos/$GITHUB_REPOSITORY/pulls/$PULLNUMBER/reviews"
+    echo $url
+
     REVIEWERSJSON=$(curl \
   --fail \
   --header "Accept: application/vnd.github.v3+json" \
   --header "Authorization: token $GITHUB_TOKEN" \
-  https://api.github.com/repos/$GITHUB_REPOSITORY/pulls/$PULLNUMBER/reviews)
+  $url)
 
   if [ "$?" -eq 0 ]; then
     echo "JSON Received"
